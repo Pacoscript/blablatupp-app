@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import logic from '../logic'
 export default {
   name: 'LoginForm',
   data: () => {
@@ -35,7 +36,13 @@ export default {
   },
   methods: {
     submitLogin: function() {
-      console.log(this.username, this.password)
+      try {
+        logic.login(this.username, this.password).then(() => {
+          this.$router.push({ path: 'home' })
+        })
+      } catch (err) {
+        console.log(err)
+      }
     },
   },
 }
