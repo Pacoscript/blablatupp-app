@@ -25,6 +25,24 @@ const logic = {
         sessionStorage.setItem('token', token)
       })
   },
+  getMyRations() {
+    return fetch(`http://localhost:5000/api/rations/${this._userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: `Bearer ${this._token}`,
+      },
+      body: JSON.stringify({
+        createdBy: this._userId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) throw Error(res.error)
+
+        return res.data
+      })
+  },
 }
 
 module.exports = logic
