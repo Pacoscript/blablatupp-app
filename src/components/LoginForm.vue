@@ -21,6 +21,7 @@
     <button v-on:click="submitLogin" type="submit" class="btn btn-primary">
       Submit
     </button>
+    <p class="errorMessage" v-show="error">{{ error }}</p>
   </form>
 </template>
 
@@ -32,16 +33,22 @@ export default {
     return {
       username: '',
       password: '',
+      error: undefined,
     }
   },
   methods: {
     submitLogin: function() {
       try {
-        logic.login(this.username, this.password).then(() => {
-          this.$router.push({ path: 'home' })
-        })
+        logic
+          .login(this.username, this.password)
+          .then(() => {
+            this.$router.push({ path: 'home' })
+          })
+          .catch(error => {
+            this.error = error.message
+          })
       } catch (err) {
-        console.log(err)
+        this.error(err.message)
       }
     },
   },
