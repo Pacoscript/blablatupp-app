@@ -58,6 +58,26 @@ const logic = {
         return res.data
       })
   },
+  createWorkplace(name, address, city) {
+    return fetch(`http://localhost:5000/api/work-center/${this._userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: `Bearer ${this._token}`,
+      },
+      body: JSON.stringify({
+        name: name,
+        address: address,
+        city: city,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) throw Error(res.error)
+
+        return res.data
+      })
+  },
 }
 
 module.exports = logic

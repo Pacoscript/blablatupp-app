@@ -7,10 +7,10 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Home</b-nav-item>
-          <b-nav-item href="#">Mi centro de trabajo</b-nav-item>
-          <b-nav-item href="#">Mis comidas</b-nav-item>
-          <b-nav-item href="#">Comidas compradas</b-nav-item>
+          <b-nav-item href="#/home">Home</b-nav-item>
+          <b-nav-item href="#/workcenter">My Work Center</b-nav-item>
+          <b-nav-item href="#">My rations</b-nav-item>
+          <b-nav-item href="#">Buyed rations</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

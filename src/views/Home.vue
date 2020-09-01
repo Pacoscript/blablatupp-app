@@ -4,7 +4,7 @@
     <div class="userInfo">
       <b-container>
         <b-row>
-          <b-col>
+          <b-col v-if="userInfo !== undefined">
             <b-avatar size="6rem" variant="info"></b-avatar>
 
             <b-row>Name: {{ userInfo.name }}</b-row>
@@ -67,7 +67,7 @@ export default {
 <style>
 .userInfo {
   border: 1px solid grey;
-  max-width: 30%;
+  width: 350px;
   margin: auto;
   margin-top: 30px;
 }
