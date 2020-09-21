@@ -13,7 +13,7 @@
               {{
                 userInfo.workCenter === null
                   ? 'Work Center no asignado'
-                  : userInfo.workCenter
+                  : userInfo.workCenter.name
               }}</b-row
             >
             <b-row

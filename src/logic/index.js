@@ -78,6 +78,54 @@ const logic = {
         return res.data
       })
   },
+  getWorkplaces(){
+    return fetch(`http://localhost:5000/api/workplaces/${this._userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: `Bearer ${this._token}`,
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) throw Error(res.error)
+        return res.data
+      })
+  },
+  assignWorkplace(workplaceId) {
+    return fetch(`http://localhost:5000/api/user/assignWorkCenter/${this._userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: `Bearer ${this._token}`,
+      },
+      body: JSON.stringify({
+        workCenterId: workplaceId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) throw Error(res.error)
+        return res.message
+      })
+  },
+  getWorkplaceInfo(workplaceId) {
+    return fetch(`http://localhost:5000/api/retrieveWorkplace/${this._userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: `Bearer ${this._token}`,
+      },
+      body: JSON.stringify({
+        workCenterId: workplaceId
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) throw Error(res.error)
+        return res.data
+      })
+  }
 }
 
 module.exports = logic
